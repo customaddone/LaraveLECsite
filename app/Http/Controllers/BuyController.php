@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Buy;
 use App\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class BuyController extends Controller
 {
@@ -25,6 +27,8 @@ class BuyController extends Controller
     {
         // ユーザーが持っているカート情報を削除し、購入完了画面に進む
         if( $request->has('post') ){
+            // MailクラスとBuyクラスを使ってメールを送信する
+            Mail::to(Auth::user()->email)->send(new Buy());
             CartItem::where('user_id', Auth::id()->delete());
             return view('buy.complete');
         }
