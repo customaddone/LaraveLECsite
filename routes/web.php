@@ -20,4 +20,6 @@ Route::get('/', 'ItemsController@index');
 // 商品の詳細
 Route::get('/items/{item}', 'ItemsController@show');
 // カートへ商品を投入する
-Route::post('/cartitems', 'CartItemsCotroller@store');
+Route::post('/cartitems', 'CartItemsController@store');
+
+Route::get('/cartitems', 'CartItemsController@index');

@@ -6,7 +6,7 @@ use App\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CartItemsCotroller extends Controller
+class CartItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,19 @@ class CartItemsCotroller extends Controller
      */
     public function index()
     {
-        
+        /* 検索結果に含めるカラムを指定　*は全ての
+           joinでテープルを結合　第２引数以降はカラムの制約条件
+           （ items.id = cart_items.item_idになるように結合 ）*/
+        $cartItems = CartItem::select('cart_items.*', 'items.name', 'items.amount')
+            ->where('user_id', Auth::id())
+            ->join('items', 'items.id', '=', 'cart_items.item_id')
+            ->get();
+        // 合計額を計算
+        $subtotal = 0;
+        foreach($cartItems as $cartitem){
+            $subtotal += $cartitem->amount * $cartitem->quantity;
+        }
+        return view('cartitems.index', ['cartitems' => $cartItems, 'subtotal' => $subtotal]);
     }
 
     /**

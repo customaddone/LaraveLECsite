@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <!-- config/app.phpのnameの値を取る --> 
+                <!-- config/app.phpのnameの値を取る -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -55,6 +55,11 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                <li class="nav-item">
+                                    <a href="/cartitems" class="nav-link">
+                                        カート
+                                    </a>
+                                </li>
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
