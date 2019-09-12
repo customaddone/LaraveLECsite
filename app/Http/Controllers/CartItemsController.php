@@ -92,9 +92,12 @@ class CartItemsController extends Controller
      * @param  \App\CartItem  $cartItem
      * @return \Illuminate\Http\Response
      */
+    // resourceでルーティングした場合後ろのCartitemは使えない
     public function update(Request $request, CartItem $cartItem)
     {
-        //
+        $cartItem->quantity = $request->post('quantity');
+        $cartItem->save();
+        return redirect('cartitems')->with('flash_message', 'カートを更新しました');
     }
 
     /**
@@ -105,6 +108,7 @@ class CartItemsController extends Controller
      */
     public function destroy(CartItem $cartItem)
     {
-        //
+        $cartItem->delete();
+        return redirect('cartitems')->with('flash_message', 'カートから削除しました');
     }
 }

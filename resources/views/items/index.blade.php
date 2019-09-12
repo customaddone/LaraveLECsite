@@ -13,7 +13,7 @@
                 <div class="card">
                     <!-- 商品の名前を表示 -->
                     <div class="card-header">
-                        <a href="/item/{{ $item->id }}">{{ $item->name }}</a>
+                        <a href="/items/{{ $item->id }}">{{ $item->name }}</a>
                     </div>
                     <!-- 商品の価格を表示 -->
                     <div class="card-body">

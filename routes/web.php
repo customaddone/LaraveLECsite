@@ -21,5 +21,8 @@ Route::get('/', 'ItemsController@index');
 Route::get('/items/{item}', 'ItemsController@show');
 // カートへ商品を投入する
 Route::post('/cartitems', 'CartItemsController@store');
-
+// 商品の一覧
 Route::get('/cartitems', 'CartItemsController@index');
+// カートの中の商品の削除、更新　{Cartitem}で選択した商品を送っている
+Route::delete('/cartitems/{cartItem}', 'CartItemsController@destroy');
+Route::put('/cartitems/{cartItem}', 'CartItemsController@update');

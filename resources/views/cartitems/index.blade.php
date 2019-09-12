@@ -13,9 +13,22 @@
                             <div>
                                 {{ $cartitem->amount }}円
                             </div>
-                            <div>
-                                {{ $cartitem->quantity }}個
-                            </div>
+                            <div class="form-inline">
+                               <!-- 数量を更新するフォームに変更 -->
+                               <form method="POST" action="/cartitems/{{ $cartitem->id }}">
+                                   @method('PUT')
+                                   @csrf
+                                   <input type="text" class="form-control" name="quantity" value="{{ $cartitem->quantity }}">
+                                   個
+                                   <button type="submit" class="btn btn-primary">更新</button>
+                               </form>
+                               <!-- 削除フォームを追加 -->
+                               <form method="POST" action="/cartitems/{{ $cartitem->id }}">
+                                   @method('DELETE')
+                                   @csrf
+                                   <button type="submit" class="btn btn-primary ml-1">カートから削除する</button>
+                               </form>
+                           </div>
                         </div>
                     @endforeach
                 </div>
