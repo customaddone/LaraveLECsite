@@ -15,5 +15,7 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+// 商品一覧
 Route::get('/', 'ItemsController@index');
+// 商品の詳細
+Route::get('/items/{item}', 'ItemsController@show');
