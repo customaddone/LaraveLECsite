@@ -12,9 +12,16 @@ class ItemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::all();
+        /* リクエストに'keyword'が入っていたら検索機能を動かす */
+        if ($request->has('keyword')) {
+            /* get()でリクエストの中のgetに対応する値を呼び出す */
+            $items = Item::where('name', 'like', '%'.$request->get('keyword'). '%')
+                                 ->paginate(15);
+        } else {
+            $items = Item::paginate(15);
+        }
         return view('items.index', ['items' => $items]);
     }
 

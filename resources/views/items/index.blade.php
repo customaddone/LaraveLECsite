@@ -16,5 +16,11 @@
             </div>
             @endforeach
         </div>
+        <!-- 以下の部分を追加 -->
+        <div class="row justify-content-center">
+            <!-- appendsでURLにパラメータを付与 Request::getでkeywordの値をビューから
+        　　　　　参照できる -->
+            {{ $items->appends(['keyword' => Request::get('keyword')])->links() }}
+        </div>
     </div>
 @endsection
