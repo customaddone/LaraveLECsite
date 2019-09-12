@@ -26,3 +26,6 @@ Route::get('/cartitems', 'CartItemsController@index');
 // カートの中の商品の削除、更新　{Cartitem}で選択した商品を送っている
 Route::delete('/cartitems/{cartItem}', 'CartItemsController@destroy');
 Route::put('/cartitems/{cartItem}', 'CartItemsController@update');
+// 購入確認画面作成
+Route::get('/buy', 'BuyController@index');
+Route::post('/buy', 'BuyController@store');

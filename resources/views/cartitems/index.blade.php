@@ -34,15 +34,22 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        小計
-                    </div>
-                    <div class="card-body">
-                        {{ $subtotal }}
-                    </div>
-                </div>
-            </div>
+               <div class="card">
+                   <div class="card-header">
+                       小計
+                   </div>
+                   <div class="card-body">
+                       <div>
+                           {{ $subtotal }}円
+                       </div>
+                       <div>
+                           <a class="btn btn-primary" href="/buy" role="button">
+                               レジに進む
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
         </div>
     </div>
 @endsection
